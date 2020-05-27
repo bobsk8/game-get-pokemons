@@ -1,0 +1,30 @@
+.container {
+    text-align: center;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-control{
+    width: 100%;
+}
+
+.move-area {
+    margin-top: 10%;
+}
+
+.table-area {
+    margin-top: 5%;
+}
+
+.move-label {
+    padding-left: 10%;
+}
+
+.move-button {
+    padding-right: 10%;
+}
+
+.move-message-danger {
+    margin-top: 2%;
+}

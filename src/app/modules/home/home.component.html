@@ -1,0 +1,33 @@
+<div class="container">
+    <form #fmove="ngForm" [formGroup]="homeForm" (submit)="ngSubmit(fmove)">
+        <div class="row">
+            <div class="col-sm">
+                <h3>Game Capture the Pokémons</h3>
+                <h6>Move only with 'N', 'S', 'O', or 'E' characters</h6>
+                <h6>Ex: NESO</h6>
+            </div>
+        </div>
+        <div class="row move-area">
+            <div class="col-2 move-label">
+                <label for="move">Moves</label>
+            </div>
+            <div class="col-8">
+                <input formControlName="inputValue" class="form-control" type="text" name="move" id="move">
+                <div *ngIf="homeForm.get('inputValue')?.errors && submitted">
+                    <p class="alert alert-danger move-message-danger" *ngIf="homeForm.get('inputValue')?.errors?.required">
+                        Please, introduce a valid Move
+                    </p>
+                    <p class="alert alert-danger move-message-danger" *ngIf="homeForm.get('inputValue')?.errors?.pattern">
+                        Please, introduce a valid Move N S O E
+                    </p>                    
+                </div>
+            </div>
+            <div class="col-2 move-button">
+                <button type="submit" class="btn btn-primary">Move</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <app-home-table-list [list]="actionsList"></app-home-table-list>
+</div>
