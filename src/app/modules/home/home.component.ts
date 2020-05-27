@@ -29,13 +29,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngSubmit(form: any) {
+  ngSubmit(form: FormGroup) {
     this.submitted = true;
     if (!form.valid) {
       return;
     }
-    const value = this.gameMoveService.startGame(form.value.inputValue);
-    this.actionsList.push({ commands: form.value.inputValue, pokemons: value });
+    const capturedPokemons = this.gameMoveService.startGame(form.value.inputValue);
+    const moveAction = { commands: form.value.inputValue, pokemons: capturedPokemons };
+    this.actionsList.push(moveAction);
   }
 
 }

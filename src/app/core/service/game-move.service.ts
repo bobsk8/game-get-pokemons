@@ -53,12 +53,12 @@ export class GameMoveService {
   }
 
   // Search for equal value action
-  private test(value: MoveAction) {
+  private test(value: MoveAction): boolean {
     return this.moveActionsHistory.some(m => (m.x === value.x && m.y === value.y));
   }
 
   // initialize default values
-  private initValues() {
+  private initValues(): void {
     this.moveActionsHistory = [new MoveAction(0, 0)];
     this.capturedPokemons = 1;
   }
