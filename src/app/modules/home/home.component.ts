@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 
 import { GameMoveService } from 'src/app/core/service/game-move.service';
-import { MoveConst } from 'src/app/core/const/move-const';
+import { MoveConst } from 'src/app/core/constants/move-const';
 
 @Component({
   selector: 'app-home',
@@ -29,14 +29,21 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngSubmit(form: FormGroup) {
+  ngSubmit(form: NgForm) {
     this.submitted = true;
     if (!form.valid) {
       return;
     }
+    this.moveAsh(form);
+  }
+
+  moveAsh(form: NgForm) {
     const capturedPokemons = this.gameMoveService.startGame(form.value.inputValue);
     const moveAction = { commands: form.value.inputValue, pokemons: capturedPokemons };
     this.actionsList.push(moveAction);
+    form.form.markAsPristine();
+    form.resetForm();
+    this.submitted = false;
   }
 
 }

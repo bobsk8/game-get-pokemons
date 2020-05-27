@@ -1,27 +1,86 @@
-# GameGetPokemons
+# Capture Pokémons
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+## Aplication
+Ash is picking up Pokémon in a world that consists of an infinite two-dimensional grid of houses.
+In each house there is exactly one pokémon.
+Ash starts by picking up the Pokémon that is in the house where he starts. Then move to the house
+immediately to the north, south, east or west of where you are and catch the pokémon that is there,
+and so on. Attention: if he passes a house where he has already passed (and, therefore, where he has already
+a pokémon), there is no pokémon for him to catch!
+Check how many Pokémon does Ash pick up for a given sequence of moves!
 
-## Development server
+## Technologies used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Angular 8
+* git
+* Nodejs
+* npm
+* Bootstrap
+* jquery
 
-## Code scaffolding
+## System Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Technology | Site |
+| ------ | ------ |
+| Angular CLI v 8.x.x | [https://cli.angular.io] |
+| Git | [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git] |
+| Nodejs v 12.x.x | [https://nodejs.org/en/download/] |
+|
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Folders organization
 
-## Running unit tests
+### Core
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* constants: Responsible for maintaining the application's global constants. 
+* services: Responsible for maintaining the application's global services. 
 
-## Running end-to-end tests
+### Models
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* Responsible for maintaining the application's global models.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Modules
+
+* Due to the use of the [Lazy Loading](https://angular.io/guide/lazy-loading-ngmodules) this application is subdivided into the following module:
+
+    #### home
+
+    * Contains the game
+
+---
+
+## Run the application
+
+Clone the project located in the repository of [github](https://github.com/bobsk8/game-get-pokemons).
+
+```sh
+$ git clone https://github.com/bobsk8/game-get-pokemons
+```
+
+Enter the project folder with the command
+```sh
+$ cd game-get-pokemons
+```
+
+Install the front dependencies with the command
+```sh
+$ npm i
+```
+
+Run the application
+```sh
+$ ng serve
+```
+
+Open browsed on
+```sh
+http://localhost:4200/
+```
+
+For test you need to run
+```sh
+$ ng test
+```
+---

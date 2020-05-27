@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MoveAction } from '../../models/move-action';
-import { MoveConst } from '../const/move-const';
+import { MoveConst } from '../constants/move-const';
 
 @Injectable({
   providedIn: 'root'
