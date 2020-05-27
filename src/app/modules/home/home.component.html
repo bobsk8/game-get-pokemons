@@ -27,22 +27,5 @@
     </form>
 </div>
 <div class="container">
-    <div class="row table-area">
-        <div class="col-sm">
-            <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Commands</th>
-                        <th scope="col">Pokemons</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let action of actionsList">
-                        <td>{{action.commands}}</td>
-                        <td>{{action.pokemons}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <app-home-table-list [list]="actionsList"></app-home-table-list>
 </div>
