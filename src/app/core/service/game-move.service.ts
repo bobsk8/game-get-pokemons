@@ -8,15 +8,15 @@ import { MoveConst } from '../const/move-const';
 })
 export class GameMoveService {
 
-  private moveActions: MoveAction[] = [new MoveAction(0, 0)];
-  private capturedPokemons = 1;
+  private moveActionsHistory: MoveAction[];
+  private capturedPokemons;
   private contX = 0;
   private contY = 0;
   constructor() { }
 
   // Start the game
   public startGame(directions: string): number {
-    this.clearValues();
+    this.initValues();
     const directionsList = directions.split('');
     directionsList.map(m => this.setMove(m));
     return this.capturedPokemons;
@@ -44,21 +44,22 @@ export class GameMoveService {
     }
   }
 
-  // Add move action to list
+  // Add move action to list moveActionsHistory
   private addMove(mAction: MoveAction): void {
     if (!this.test(mAction)) {
       this.capturedPokemons++;
     }
-      this.moveActions.push(new MoveAction(mAction.x, mAction.y));
+    this.moveActionsHistory.push(new MoveAction(mAction.x, mAction.y));
   }
 
-  // Search for equal value action 
+  // Search for equal value action
   private test(value: MoveAction) {
-    return this.moveActions.some(m => (m.x === value.x && m.y === value.y));
+    return this.moveActionsHistory.some(m => (m.x === value.x && m.y === value.y));
   }
 
-  private clearValues() {
-    this.moveActions = [new MoveAction(0, 0)];
+  // initialize default values
+  private initValues() {
+    this.moveActionsHistory = [new MoveAction(0, 0)];
     this.capturedPokemons = 1;
   }
 }
