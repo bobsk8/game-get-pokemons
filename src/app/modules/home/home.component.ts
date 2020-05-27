@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { GameMoveService } from 'src/app/core/service/game-move.service';
+import { MoveConst } from 'src/app/core/const/move-const';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   submitted = false;
   homeForm: FormGroup;
+  actionsList = [];
   constructor(
     private fb: FormBuilder,
     private gameMoveService: GameMoveService
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   createForm(): FormGroup {
     return this.fb.group({
-      imputValue: ['', Validators.required]
+      inputValue: ['', [Validators.required, Validators.pattern(MoveConst.MOVIMENTS_PATTERN)]]
     });
   }
 
@@ -32,8 +34,8 @@ export class HomeComponent implements OnInit {
     if (!form.valid) {
       return;
     }
-
-
+    const value = this.gameMoveService.startGame(form.value.inputValue);
+    this.actionsList.push({ commands: form.value.inputValue, pokemons: value });
   }
 
 }

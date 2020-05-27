@@ -10,10 +10,13 @@
                 <label for="move">Moves</label>
             </div>
             <div class="col-8">
-                <input formControlName="imputValue" class="form-control" type="text" name="move" id="move">
-                <div *ngIf="homeForm.get('imputValue')?.invalid && submitted">
-                    <p class="alert alert-danger move-message-danger" *ngIf="homeForm.get('imputValue')?.errors?.required || homeForm.get('imputValue')?.errors?.imputValue">
+                <input formControlName="inputValue" class="form-control" type="text" name="move" id="move">
+                <div *ngIf="homeForm.get('inputValue')?.errors && submitted">
+                    <p class="alert alert-danger move-message-danger" *ngIf="homeForm.get('inputValue')?.errors?.required">
                         Please, introduce a valid Move
+                    </p>
+                    <p class="alert alert-danger move-message-danger" *ngIf="homeForm.get('inputValue')?.errors?.pattern">
+                        Please, introduce a valid Move N S O E
                     </p>                    
                 </div>
             </div>
@@ -34,17 +37,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <td>Larry</td>
-                        <td>the Bird</td>
+                    <tr *ngFor="let action of actionsList">
+                        <td>{{action.commands}}</td>
+                        <td>{{action.pokemons}}</td>
                     </tr>
                 </tbody>
             </table>
